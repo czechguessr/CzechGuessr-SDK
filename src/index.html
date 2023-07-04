@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CzechGuessr SDK</title>
+
+    <script type="text/javascript" src="https://api.mapy.cz/loader.js"></script>
+    <script type="text/javascript">
+        Loader.load(null, { pano: true });
+    </script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.0.min.js"
+        integrity="sha256-2Pmvv0kuTBOenSvLm6bvfBSSHrUJ+3A7x6P5Ebd07/g=" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+
+    <link rel="stylesheet" href="/style/sdk.css">
+    <script src="/script/SDK.js"></script>
+</head>
+
+<body onload="CzechGuessr.SDK.load()">
+    <div id="left">
+        <div id="map"></div>
+        <div id="pano"></div>
+    </div>
+    <div id="right">
+        <a href="#json">JSON Document</a>
+        <a name="general"></a>
+        <h3>General</h3>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Name</span>
+            <input type="text" id="mapName" class="form-control" aria-label="Name"
+                onchange="CzechGuessr.SDK.rerenderTable();">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Author</span>
+            <input type="text" id="mapAuthor" class="form-control" aria-label="Name"
+                onchange="CzechGuessr.SDK.rerenderTable();">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Center lat.</span>
+            <input type="number" id="mapCenterLat" class="form-control" aria-label="Name"
+                onchange="CzechGuessr.SDK.rerenderTable();">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Center lon.</span>
+            <input type="number" id="mapCenterLon" class="form-control" aria-label="Name"
+                onchange="CzechGuessr.SDK.rerenderTable();">
+        </div>
+        <div class="input-group mb-3">
+            <span class="input-group-text">Center zoom</span>
+            <input type="number" id="mapCenterZoom" class="form-control" aria-label="Name"
+                onchange="CzechGuessr.SDK.rerenderTable();">
+        </div>
+        <hr>
+        <a name="random"></a>
+        <h3>Random generation</h3>
+        <label for="count">Count:</label>
+        <input type="number" id="count" class="form-control">
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col"></th>
+                    <th scope="col">minimal</th>
+                    <th scope="col">maximal</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td scope="row">latitude</td>
+                    <td>
+                        <input type="number" id="minLat" class="form-control">
+                    </td>
+                    <td>
+                        <input type="number" id="maxLat" class="form-control">
+                    </td>
+                </tr>
+                <tr>
+                    <td scope="row">longitude</td>
+                    <td>
+                        <input type="number" id="minLon" class="form-control">
+                    </td>
+                    <td>
+                        <input type="number" id="maxLon" class="form-control">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <button class="btn btn-secondary" onclick="CzechGuessr.SDK.preview();">Preview</button>
+        <button class="btn btn-primary" onclick="CzechGuessr.SDK.generate();">Generate</button>
+        <hr>
+        <a name="locations"></a>
+        <h3>Locations</h3>
+        <table id="locations" class="table">
+            <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">latitude</th>
+                    <th scope="col">longitude</th>
+                    <th scope="col">delete</th>
+                    <th scope="col">preview</th>
+                </tr>
+            </thead>
+            <tbody id="locBody"></tbody>
+        </table>
+        <hr>
+        <a name="json"></a>
+        <h3>JSON Map file</h3>
+        <textarea id="jsonMap" class="form-control" rows="30"></textarea>
+    </div>
+</body>
+
+</html>

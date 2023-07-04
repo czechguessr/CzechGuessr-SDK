@@ -1,0 +1,46 @@
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css");
+
+body,
+html {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: row;
+}
+
+#left {
+    display: flex;
+    flex-direction: column;
+}
+
+#map,
+#pano {
+    width: 100%;
+    height: 50%;
+}
+
+#left,
+#right {
+    width: 50%;
+    height: 100%;
+}
+
+#right {
+    padding: 5px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+#locations {
+    width: 100%;
+}
+
+#jsonMap {
+    width: 100%;
+    font-family: 'Courier New', Courier, monospace;
+}
